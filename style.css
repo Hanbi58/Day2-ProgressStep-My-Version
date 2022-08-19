@@ -39,11 +39,12 @@ body {
 .progress {
   background-color: blue;
   height: 5px;
-  width: 33%;
+  width: 0%;
   border-radius: 2.5px;
   position: absolute;
   transform: translateY(350%);
   z-index: -1;
+  transition: 0.4s ease;
 }
 
 .circle {
