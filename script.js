@@ -1,3 +1,5 @@
+//My own version. Not familier with suedo selector ::before. This version is more friendly to beginers.
+
 const progress = document.getElementById("progress");
 const prev = document.getElementById("prev");
 const next = document.getElementById("next");
@@ -8,14 +10,14 @@ let activeAmount = 1;
 next.addEventListener("click", () => {
   activeAmount++;
   activeAmount = Math.min(activeAmount++, circles.length);
-  console.log(activeAmount);
+
   update();
 });
 
 prev.addEventListener("click", () => {
   activeAmount--;
   activeAmount = Math.max(activeAmount++, 1);
-  console.log(activeAmount);
+
   update();
 });
 
@@ -29,7 +31,12 @@ function update() {
     next.disabled = false;
   }
 
-  console.log(activeAmount / circles.length);
+  circles.forEach((circle, idx) => {
+    idx < activeAmount
+      ? circle.classList.add("active")
+      : circle.classList.remove("active");
+  });
+
   progress.style.width =
     ((activeAmount - 1) / (circles.length - 1)) * 100 + "%";
 }
